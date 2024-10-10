@@ -11,15 +11,16 @@ const getRandom = () => Math.floor(Math.random() * 10);
 
 root.render(
   <div>
-    <h1>{value}</h1>
+    {/* <h1 style={{ color: "blue" }}>{value}</h1> */}
+    <h1 className="h1-style">{value}</h1>
     <h2>{firstName} {lastName}</h2>
     <ul>
       {
         Array.from({ length: 5 }, (_, index) =>
-          <li>Элемент {getRandom() % 2 ? "ODD" : "EVEN"}</li>)
+          <li key={index}>Элемент {getRandom() % 2 ? "ODD" : "EVEN"}</li>)
       }
     </ul>
-  </div>
+  </div >
 );
 
 // const h1Element = document.createElement("h1");
