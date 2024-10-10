@@ -1,17 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+const value = "Какое-то значение";
+const firstName = "Алекс";
+const lastName = "Брусьника";
+const getRandom = () => Math.floor(Math.random() * 10);
+
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <div>
+    <h1>{value}</h1>
+    <h2>{firstName} {lastName}</h2>
+    <ul>
+      {
+        Array.from({ length: 5 }, (_, index) =>
+          <li>Элемент {getRandom() % 2 ? "ODD" : "EVEN"}</li>)
+      }
+    </ul>
+  </div>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// const h1Element = document.createElement("h1");
+// h1Element.innerText = "Hello world!";
+// const root = document.getElementById("root");
+// root.appendChild(h1Element);
