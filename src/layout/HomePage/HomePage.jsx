@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import Header from './components/Header';
 
 const baseUrl = "https://jsonplaceholder.typicode.com/posts";
+const photoUrl = "https://jsonplaceholder.typicode.com/photos";
 
 const HomePage = () => {
     const headerText = "Какое-то значение";
@@ -24,9 +25,17 @@ const HomePage = () => {
     const currentYear = new Date().getFullYear();
 
     useEffect(() => {
-        axios.get(baseUrl)
-            .then(res => {
-                res.data.slice(0, 5);
+        Promise.all([axios.get(baseUrl), axios.get(photoUrl)])
+            .then(([res1, res2]) => {
+                const temp = [
+                    ...res1.data.slice(0, 5).map((item, index) => ({
+                        id: item.id,
+                        cardTitle: item.title,
+                        cardText: item.body,
+                        image: res2.data[index].url
+                    })),
+                ];
+                setLabels(temp);
             });
     });
 
