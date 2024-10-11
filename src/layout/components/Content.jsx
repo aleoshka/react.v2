@@ -1,14 +1,14 @@
 import React from 'react';
 
-const Content = () => {
+const Content = (props) => {
     return (
         <div>
-            {Array.from({ length: 5 }, (_, index) =>
+            {props.labels.map((item) =>
                 <div className="card m-3">
-                    <img src={`https://picsum.photos/${200 + index}/100`} className="card-img-top" alt="..." />
+                    <img src={item.cardImage} className="card-img-top" alt="Случайная картинка" />
                     <div className="card-body">
-                        <h5 className="card-title">Заголовок 1</h5>
-                        <p className="card-text">Описание 1</p>
+                        <h5 className="card-title">{item.cardTitle}</h5>
+                        <p className="card-text">{item.cardText}</p>
                     </div>
                 </div>
             )}
