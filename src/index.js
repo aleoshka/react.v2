@@ -8,8 +8,8 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 
 root.render(
-  <MyComponents />
-  // <HomePage />
+  // <MyComponents />
+  <HomePage />
 )
 
 // const h1Element = document.createElement("h1");
