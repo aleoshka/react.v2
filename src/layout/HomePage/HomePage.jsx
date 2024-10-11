@@ -27,17 +27,14 @@ const HomePage = () => {
     useEffect(() => {
         Promise.all([axios.get(baseUrl), axios.get(photoUrl)])
             .then(([res1, res2]) => {
-                const temp = [
-                    ...res1.data.slice(0, 5).map((item, index) => ({
-                        id: item.id,
-                        cardTitle: item.title,
-                        cardText: item.body,
-                        image: res2.data[index].url
-                    })),
-                ];
-                setLabels(temp);
+                setLabels(res1.data.slice(0, 5).map((item, index) => ({
+                    ...item,
+                    ...res2.data[index]
+                })));
+                console.log(labels);
             });
-    });
+    }, []);
+
 
     return (
         <div className="container col-10">
